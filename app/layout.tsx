@@ -7,7 +7,7 @@ export const metadata = {
   title: "Lungsom Lamnio | Next-Gen Portfolio",
   description: "Full Stack Developer & Creative Engineer",
   icons: {
-    icon: "https://res.cloudinary.com/dgmftp80m/image/upload/v1771339042/My_Logo_fne0hl.png",
+    icon: "https://res.cloudinary.com/dgmftp80m/image/upload/v1771339455/LL_aq7jmv.png",
   },
 };
 
