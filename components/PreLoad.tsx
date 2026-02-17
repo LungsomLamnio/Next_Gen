@@ -30,7 +30,7 @@ export default function Preloader() {
   }, []);
 
   const terminalVariants: Variants = {
-    initial: { opacity: 0 },
+    initial: { opacity: 1 },
     animate: { opacity: 1 },
     exit: { 
       y: "-100%", 

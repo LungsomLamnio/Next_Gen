@@ -25,7 +25,7 @@ export default function Home() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 4500);
 
     return () => {
       clearTimeout(timer);
@@ -34,26 +34,30 @@ export default function Home() {
   }, [isLoading]);
 
   return (
-    <main className="relative bg-black min-h-screen">
+    <main className="relative bg-[#020202] min-h-screen">
       <AnimatePresence mode="wait">
         {isLoading && <Preloader key="preloader" />}
       </AnimatePresence>
 
-      <Navbar />
+      {!isLoading && (
+        <>
+          <Navbar />
 
-      <div className="fixed inset-0 z-0">
-        <Scene3D />
-      </div>
+          <div className="fixed inset-0 z-0">
+            <Scene3D />
+          </div>
 
-      <div className="relative z-10 flex flex-col">
-        <Hero />
-        <About />
-        <Projects />
-        <Achievements />
-        <Experience />
-        <Contact />
-        <Footer />
-      </div>
+          <div className="relative z-10 flex flex-col">
+            <Hero />
+            <About />
+            <Projects />
+            <Achievements />
+            <Experience />
+            <Contact />
+            <Footer />
+          </div>
+        </>
+      )}
     </main>
   );
 }
