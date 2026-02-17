@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import Scene3D from "@/components/visuals/Scene3D";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -7,10 +11,34 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Achievements from "@/components/Achievements";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/PreLoad";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoading]);
+
   return (
     <main className="relative bg-black min-h-screen">
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader key="preloader" />}
+      </AnimatePresence>
+
       <Navbar />
 
       <div className="fixed inset-0 z-0">
@@ -24,7 +52,6 @@ export default function Home() {
         <Achievements />
         <Experience />
         <Contact />
-
         <Footer />
       </div>
     </main>
